@@ -1,0 +1,225 @@
+package giorgio;
+//la classe setta i due parametri e controlla se rispetta il 2.5,3.5,1.5 sia over che under
+public class OverUnder {
+	
+	private static int RisultatoPartita; 
+	private static int risultato1;
+	private static int risultato2;
+	private static float RisultatoEquazione; 
+	private static float risultatoe1;
+	private static float risultatoe2;
+	private static int golgol;
+	private static int nogol;
+	private static int overuno;
+	private static int overdue;
+	private static int overtre;
+	private static int underuno;
+	private static int underdue;
+	private static int undertre;
+	public void printt()
+	{
+		System.out.print(golgol);
+		System.out.print(nogol);
+		System.out.print(overuno);
+		System.out.println(undertre);
+	}
+	public OverUnder(int x, int y)
+	{
+		 risultato1 = x;
+		 risultato2 = y;
+		 SetRisultatoPartita(x,y);
+		 golgol = GolGol();
+		 nogol = NoGol();
+		 underuno = UnderUnoCinque() ;
+		 underdue =  UnderDueCinque();
+		 undertre = UnderTreCinque();
+		 overuno = OverUnoCinque() ;
+		 overdue =  OverDueCinque();
+		 overtre = OverTreCinque();
+	}
+
+	public void SetUnderTre(int x)
+	{
+		undertre = x;
+	}
+	public void SetUnderDue(int x)
+	{
+		underdue = x;
+	}
+	public void SetUnderUno(int x)
+	{
+		underuno = x;
+	}
+	public void SetOverTre(int x)
+	{
+		overtre = x;
+	}
+	public void SetOverDue(int x)
+	{
+		overdue = x;
+	}
+	public void SetOverUno(int x)
+	{
+		overuno = x;
+	}
+	public void SetGolGol(int x)
+	{
+		golgol = x;
+	}
+	public void SetNoGol(int x)
+	{
+		nogol = x;
+	}
+	public int GetUnderTre()
+	{
+		return undertre;
+	}
+	public int GetUnderDue()
+	{
+		return underdue;
+	}
+	public int GetUnderUno()
+	{
+		return underuno;
+	}
+	public int GetOverTre()
+	{
+		return overtre;
+	}
+	public int GetOverDue()
+	{
+		return overdue;
+	}
+	public int GetOverUno()
+	{
+		return overuno;
+	}
+	public int GetGolGol()
+	{
+		return golgol;
+	}
+	public int GetNoGol()
+	{
+		return nogol;
+	}
+	public void SetRisultatoPartita(int x, int y)
+	{
+		risultato1 = x;
+		risultato2 = y;
+		RisultatoPartita = x+y;
+	}
+	public void SetRisultatoEuno(float x)
+	{
+		risultatoe1 = x;
+		
+	}
+	public void SetRisultatoEdue(float x)
+	{
+		risultatoe2 = x;
+		
+	}
+	public void SetRisultatoEquazione()
+	{
+		RisultatoEquazione = risultatoe1 + risultatoe2;
+	}
+	public int GolGol()
+	{
+		if((risultato1 >= 1 && risultato2 >= 1))
+			return 1;
+		return 0;
+	}	
+	public int FGolGol()
+	{
+		if((risultatoe1 >= 1.0 && risultatoe2 >= 1.0))
+			return 1;
+		return 0;
+	}	
+	public int NoGol()
+	{
+		if((risultato1 == 0 || risultato2 == 0)){
+			return 1;
+		}
+		return 0;
+	}
+	public int FNoGol()
+	{
+		if((risultatoe1 < 1.0 || risultatoe2 < 1.0)){
+			return 1;
+		}
+		return 0;
+	}
+	public int OverUnoCinque()
+	{
+		if(RisultatoPartita >= 2)
+				return 1;
+		return 0;
+	}
+	public int OverDueCinque()
+	{
+		if(RisultatoPartita >= 3)
+				return 1;
+		return 0;
+	}
+	public int OverTreCinque()
+	{
+		if(RisultatoPartita >= 4)
+				return 1;
+		return 0;
+	}	
+	public int FOverUnoCinque()
+	{
+		if(RisultatoEquazione >= 2.0)
+				return 1;
+		return 0;
+	}
+	public int FOverDueCinque()
+	{
+		if(RisultatoEquazione >= 3.0)
+				return 1;
+		return 0;
+	}
+	public int FOverTreCinque()
+	{
+		if(RisultatoEquazione >= 4.0)
+				return 1;
+		return 0;
+	}	
+	//verifica under 1.5,2.5,3.5
+	public int UnderUnoCinque()
+	{
+		if(RisultatoPartita < 2)
+				return 1;
+		return 0;
+	}
+	public int UnderDueCinque()
+	{
+		if(RisultatoPartita < 3)
+				return 1;
+		return 0;
+	}
+	public int UnderTreCinque()
+	{
+		if(RisultatoPartita < 4)
+				return 1;
+		return 0;
+	}
+	public int FUnderUnoCinque()
+	{
+		if(RisultatoEquazione < 2.0)
+				return 1;
+		return 0;
+	}
+	public int FUnderDueCinque()
+	{
+		if(RisultatoEquazione < 3.0)
+				return 1;
+		return 0;
+	}
+	public int FUnderTreCinque()
+	{
+		if(RisultatoEquazione < 4.0)
+				return 1;
+		return 0;
+	}
+	
+}
