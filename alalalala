@@ -1,0 +1,112 @@
+package giorgio;
+
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+public class Confronto {
+	static float temp1;
+	static float temp2;
+	public static void main(String[] args) throws IOException {
+		int index = 12; //la stringa equazione 1 è lunga 12, compreso lo spazio
+		
+		// TODO Auto-generated method stub
+		/*System.out.println("Inserisci il numero di partite che hai nel file");
+		Scanner sc=new Scanner(System.in);
+		int numeropartite = sc.nextInt();*/
+		BufferedReader reader=null;
+		try {
+			reader = new BufferedReader(new FileReader("prova.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String line = null;
+		try {
+			line = reader.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		line = reader.readLine();
+		List<OverUnder> partite = new LinkedList<>();
+		int lunghezza = line.length();
+		int x = -1;
+		int y = -1;
+		int k=0;
+		for(int i=0; i < lunghezza;i++)
+		{
+			
+			if(line.charAt(i) >= '0' && line.charAt(i) <= '9')
+			{
+				if(x < 0){
+					x = line.charAt(i)- '0';
+				}
+				else {
+					if(y < 0){
+						y = line.charAt(i)- '0';
+					}
+				}
+				if(x >= 0 && y >= 0){
+			
+					partite.add(new OverUnder(x,y));
+					partite.get(k).printt();
+					k++;
+					x = -1;
+					y = -1;
+				}
+			}
+		}
+		OverUnder abc;
+		for(int i=0;i< partite.size();i++)
+		{
+			System.out.print(i+1);
+			abc = partite.get(i);
+			abc.printt();
+		}
+		
+		b.close();
+		
+		
+	}
+	
+	static int parse(String line,int j,int secondo){
+		int i=0;
+		int flag = -1;
+		float temp;
+		while(flag <= 0){
+			if(i >= line.length() || line.charAt(i) == '.')
+			{
+				flag++;
+			}
+			i++;
+		
+		}
+		if(line.charAt(i-3) == '-')
+		{
+			i=i-3;
+			temp = Float.parseFloat(line.substring(0,i));
+			
+		}
+		else {
+			i=i-2;
+			temp = Float.parseFloat(line.substring(0,i));
+			
+		}
+		i++;
+		
+		
+		if(secondo == 1){
+			temp2 = temp;
+		}
+		else {
+			temp1 = temp;	
+		}
+		return i;
+	}	
+	
+}
+
